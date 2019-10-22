@@ -1,0 +1,8 @@
+version: "3.4"
+services:
+  mayday:
+    build: .
+    volumes:
+      - .:/app
+    tty: true
+

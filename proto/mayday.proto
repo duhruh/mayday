@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/protobuf/timestamp.proto";
+
+service MaydayService {
+    rpc CreateObservation (Observation) returns (Observation) {}
+    rpc CreateType (Type) returns (Type) {}
+}
+
+message UUID {
+    string value = 1;
+}
+
+message Type {
+    UUID id = 1;
+
+    string name = 2;
+
+    string schema = 3;
+
+    google.protobuf.Timestamp created = 4;
+
+    google.protobuf.Timestamp updated = 5;
+}
+
+message Observation {
+    UUID id = 1;
+
+    string name = 2;
+
+    Type type = 3;
+
+    string payload = 4;
+
+    google.protobuf.Timestamp created = 5;
+
+    google.protobuf.Timestamp updated = 6;
+}
