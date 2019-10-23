@@ -25,6 +25,302 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type ListTypesRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ListTypesRequest) Reset()         { *m = ListTypesRequest{} }
+func (m *ListTypesRequest) String() string { return proto.CompactTextString(m) }
+func (*ListTypesRequest) ProtoMessage()    {}
+func (*ListTypesRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{0}
+}
+
+func (m *ListTypesRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListTypesRequest.Unmarshal(m, b)
+}
+func (m *ListTypesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListTypesRequest.Marshal(b, m, deterministic)
+}
+func (m *ListTypesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListTypesRequest.Merge(m, src)
+}
+func (m *ListTypesRequest) XXX_Size() int {
+	return xxx_messageInfo_ListTypesRequest.Size(m)
+}
+func (m *ListTypesRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListTypesRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListTypesRequest proto.InternalMessageInfo
+
+type ListTypesResponse struct {
+	Types                []*Type  `protobuf:"bytes,1,rep,name=types,proto3" json:"types,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ListTypesResponse) Reset()         { *m = ListTypesResponse{} }
+func (m *ListTypesResponse) String() string { return proto.CompactTextString(m) }
+func (*ListTypesResponse) ProtoMessage()    {}
+func (*ListTypesResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{1}
+}
+
+func (m *ListTypesResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListTypesResponse.Unmarshal(m, b)
+}
+func (m *ListTypesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListTypesResponse.Marshal(b, m, deterministic)
+}
+func (m *ListTypesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListTypesResponse.Merge(m, src)
+}
+func (m *ListTypesResponse) XXX_Size() int {
+	return xxx_messageInfo_ListTypesResponse.Size(m)
+}
+func (m *ListTypesResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListTypesResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListTypesResponse proto.InternalMessageInfo
+
+func (m *ListTypesResponse) GetTypes() []*Type {
+	if m != nil {
+		return m.Types
+	}
+	return nil
+}
+
+type CreateObservationRequest struct {
+	Observation          *Observation `protobuf:"bytes,1,opt,name=observation,proto3" json:"observation,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
+}
+
+func (m *CreateObservationRequest) Reset()         { *m = CreateObservationRequest{} }
+func (m *CreateObservationRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateObservationRequest) ProtoMessage()    {}
+func (*CreateObservationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{2}
+}
+
+func (m *CreateObservationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateObservationRequest.Unmarshal(m, b)
+}
+func (m *CreateObservationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateObservationRequest.Marshal(b, m, deterministic)
+}
+func (m *CreateObservationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateObservationRequest.Merge(m, src)
+}
+func (m *CreateObservationRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateObservationRequest.Size(m)
+}
+func (m *CreateObservationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateObservationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateObservationRequest proto.InternalMessageInfo
+
+func (m *CreateObservationRequest) GetObservation() *Observation {
+	if m != nil {
+		return m.Observation
+	}
+	return nil
+}
+
+type CreateObservationResponse struct {
+	Observation          *Observation `protobuf:"bytes,1,opt,name=observation,proto3" json:"observation,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
+}
+
+func (m *CreateObservationResponse) Reset()         { *m = CreateObservationResponse{} }
+func (m *CreateObservationResponse) String() string { return proto.CompactTextString(m) }
+func (*CreateObservationResponse) ProtoMessage()    {}
+func (*CreateObservationResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{3}
+}
+
+func (m *CreateObservationResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateObservationResponse.Unmarshal(m, b)
+}
+func (m *CreateObservationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateObservationResponse.Marshal(b, m, deterministic)
+}
+func (m *CreateObservationResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateObservationResponse.Merge(m, src)
+}
+func (m *CreateObservationResponse) XXX_Size() int {
+	return xxx_messageInfo_CreateObservationResponse.Size(m)
+}
+func (m *CreateObservationResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateObservationResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateObservationResponse proto.InternalMessageInfo
+
+func (m *CreateObservationResponse) GetObservation() *Observation {
+	if m != nil {
+		return m.Observation
+	}
+	return nil
+}
+
+type CreateTypeRequest struct {
+	Type                 *Type    `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CreateTypeRequest) Reset()         { *m = CreateTypeRequest{} }
+func (m *CreateTypeRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateTypeRequest) ProtoMessage()    {}
+func (*CreateTypeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{4}
+}
+
+func (m *CreateTypeRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateTypeRequest.Unmarshal(m, b)
+}
+func (m *CreateTypeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateTypeRequest.Marshal(b, m, deterministic)
+}
+func (m *CreateTypeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateTypeRequest.Merge(m, src)
+}
+func (m *CreateTypeRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateTypeRequest.Size(m)
+}
+func (m *CreateTypeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateTypeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateTypeRequest proto.InternalMessageInfo
+
+func (m *CreateTypeRequest) GetType() *Type {
+	if m != nil {
+		return m.Type
+	}
+	return nil
+}
+
+type CreateTypeResponse struct {
+	Type                 *Type    `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CreateTypeResponse) Reset()         { *m = CreateTypeResponse{} }
+func (m *CreateTypeResponse) String() string { return proto.CompactTextString(m) }
+func (*CreateTypeResponse) ProtoMessage()    {}
+func (*CreateTypeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{5}
+}
+
+func (m *CreateTypeResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateTypeResponse.Unmarshal(m, b)
+}
+func (m *CreateTypeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateTypeResponse.Marshal(b, m, deterministic)
+}
+func (m *CreateTypeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateTypeResponse.Merge(m, src)
+}
+func (m *CreateTypeResponse) XXX_Size() int {
+	return xxx_messageInfo_CreateTypeResponse.Size(m)
+}
+func (m *CreateTypeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateTypeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateTypeResponse proto.InternalMessageInfo
+
+func (m *CreateTypeResponse) GetType() *Type {
+	if m != nil {
+		return m.Type
+	}
+	return nil
+}
+
+type ListObservationsRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ListObservationsRequest) Reset()         { *m = ListObservationsRequest{} }
+func (m *ListObservationsRequest) String() string { return proto.CompactTextString(m) }
+func (*ListObservationsRequest) ProtoMessage()    {}
+func (*ListObservationsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{6}
+}
+
+func (m *ListObservationsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListObservationsRequest.Unmarshal(m, b)
+}
+func (m *ListObservationsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListObservationsRequest.Marshal(b, m, deterministic)
+}
+func (m *ListObservationsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListObservationsRequest.Merge(m, src)
+}
+func (m *ListObservationsRequest) XXX_Size() int {
+	return xxx_messageInfo_ListObservationsRequest.Size(m)
+}
+func (m *ListObservationsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListObservationsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListObservationsRequest proto.InternalMessageInfo
+
+type ListObservationsResponse struct {
+	Observations         []*Observation `protobuf:"bytes,1,rep,name=observations,proto3" json:"observations,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
+}
+
+func (m *ListObservationsResponse) Reset()         { *m = ListObservationsResponse{} }
+func (m *ListObservationsResponse) String() string { return proto.CompactTextString(m) }
+func (*ListObservationsResponse) ProtoMessage()    {}
+func (*ListObservationsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{7}
+}
+
+func (m *ListObservationsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListObservationsResponse.Unmarshal(m, b)
+}
+func (m *ListObservationsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListObservationsResponse.Marshal(b, m, deterministic)
+}
+func (m *ListObservationsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListObservationsResponse.Merge(m, src)
+}
+func (m *ListObservationsResponse) XXX_Size() int {
+	return xxx_messageInfo_ListObservationsResponse.Size(m)
+}
+func (m *ListObservationsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListObservationsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListObservationsResponse proto.InternalMessageInfo
+
+func (m *ListObservationsResponse) GetObservations() []*Observation {
+	if m != nil {
+		return m.Observations
+	}
+	return nil
+}
+
 type UUID struct {
 	Value                string   `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -36,7 +332,7 @@ func (m *UUID) Reset()         { *m = UUID{} }
 func (m *UUID) String() string { return proto.CompactTextString(m) }
 func (*UUID) ProtoMessage()    {}
 func (*UUID) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{0}
+	return fileDescriptor_731e6f5f9de35653, []int{8}
 }
 
 func (m *UUID) XXX_Unmarshal(b []byte) error {
@@ -67,7 +363,7 @@ func (m *UUID) GetValue() string {
 type Type struct {
 	Id                   *UUID                `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name                 string               `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Schema               string               `protobuf:"bytes,3,opt,name=schema,proto3" json:"schema,omitempty"`
+	Schema               map[string]string    `protobuf:"bytes,3,rep,name=schema,proto3" json:"schema,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	Created              *timestamp.Timestamp `protobuf:"bytes,4,opt,name=created,proto3" json:"created,omitempty"`
 	Updated              *timestamp.Timestamp `protobuf:"bytes,5,opt,name=updated,proto3" json:"updated,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
@@ -79,7 +375,7 @@ func (m *Type) Reset()         { *m = Type{} }
 func (m *Type) String() string { return proto.CompactTextString(m) }
 func (*Type) ProtoMessage()    {}
 func (*Type) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{1}
+	return fileDescriptor_731e6f5f9de35653, []int{9}
 }
 
 func (m *Type) XXX_Unmarshal(b []byte) error {
@@ -114,11 +410,11 @@ func (m *Type) GetName() string {
 	return ""
 }
 
-func (m *Type) GetSchema() string {
+func (m *Type) GetSchema() map[string]string {
 	if m != nil {
 		return m.Schema
 	}
-	return ""
+	return nil
 }
 
 func (m *Type) GetCreated() *timestamp.Timestamp {
@@ -151,7 +447,7 @@ func (m *Observation) Reset()         { *m = Observation{} }
 func (m *Observation) String() string { return proto.CompactTextString(m) }
 func (*Observation) ProtoMessage()    {}
 func (*Observation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{2}
+	return fileDescriptor_731e6f5f9de35653, []int{10}
 }
 
 func (m *Observation) XXX_Unmarshal(b []byte) error {
@@ -215,34 +511,56 @@ func (m *Observation) GetUpdated() *timestamp.Timestamp {
 }
 
 func init() {
+	proto.RegisterType((*ListTypesRequest)(nil), "proto.ListTypesRequest")
+	proto.RegisterType((*ListTypesResponse)(nil), "proto.ListTypesResponse")
+	proto.RegisterType((*CreateObservationRequest)(nil), "proto.CreateObservationRequest")
+	proto.RegisterType((*CreateObservationResponse)(nil), "proto.CreateObservationResponse")
+	proto.RegisterType((*CreateTypeRequest)(nil), "proto.CreateTypeRequest")
+	proto.RegisterType((*CreateTypeResponse)(nil), "proto.CreateTypeResponse")
+	proto.RegisterType((*ListObservationsRequest)(nil), "proto.ListObservationsRequest")
+	proto.RegisterType((*ListObservationsResponse)(nil), "proto.ListObservationsResponse")
 	proto.RegisterType((*UUID)(nil), "proto.UUID")
 	proto.RegisterType((*Type)(nil), "proto.Type")
+	proto.RegisterMapType((map[string]string)(nil), "proto.Type.SchemaEntry")
 	proto.RegisterType((*Observation)(nil), "proto.Observation")
 }
 
 func init() { proto.RegisterFile("proto/mayday.proto", fileDescriptor_731e6f5f9de35653) }
 
 var fileDescriptor_731e6f5f9de35653 = []byte{
-	// 301 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x91, 0xcf, 0x4e, 0xbb, 0x40,
-	0x10, 0xc7, 0x4b, 0x7f, 0xd0, 0xa6, 0x43, 0x7e, 0x07, 0x27, 0xc6, 0x10, 0x34, 0xa9, 0xe1, 0xd4,
-	0x13, 0x24, 0xd5, 0xab, 0x27, 0xbd, 0x78, 0x30, 0x26, 0xd8, 0x3e, 0xc0, 0x02, 0x63, 0x25, 0x81,
-	0xee, 0x06, 0x16, 0x22, 0xcf, 0xe6, 0xf3, 0xf8, 0x1e, 0x86, 0x59, 0x88, 0x1c, 0x4c, 0xfc, 0x73,
-	0x82, 0xef, 0xec, 0x7c, 0x36, 0xf3, 0xd9, 0x01, 0x54, 0x95, 0xd4, 0x32, 0x2a, 0x45, 0x97, 0x89,
-	0x2e, 0xe4, 0x80, 0x0e, 0x7f, 0xfc, 0xf5, 0x41, 0xca, 0x43, 0x41, 0x11, 0xa7, 0xa4, 0x79, 0x8e,
-	0x74, 0x5e, 0x52, 0xad, 0x45, 0xa9, 0x4c, 0x5f, 0x70, 0x01, 0xf6, 0x7e, 0x7f, 0x7f, 0x87, 0xa7,
-	0xe0, 0xb4, 0xa2, 0x68, 0xc8, 0xb3, 0x2e, 0xad, 0xcd, 0x2a, 0x36, 0x21, 0x78, 0xb3, 0xc0, 0xde,
-	0x75, 0x8a, 0xf0, 0x1c, 0xe6, 0x79, 0xc6, 0x67, 0xee, 0xd6, 0x35, 0x68, 0xd8, 0x73, 0xf1, 0x3c,
-	0xcf, 0x10, 0xc1, 0x3e, 0x8a, 0x92, 0xbc, 0x39, 0xa3, 0xfc, 0x8f, 0x67, 0xb0, 0xa8, 0xd3, 0x17,
-	0x2a, 0x85, 0xf7, 0x8f, 0xab, 0x43, 0xc2, 0x6b, 0x58, 0xa6, 0x15, 0x09, 0x4d, 0x99, 0x67, 0xf3,
-	0x6d, 0x7e, 0x68, 0x46, 0x0c, 0xc7, 0x11, 0xc3, 0xdd, 0x38, 0x62, 0x3c, 0xb6, 0xf6, 0x54, 0xa3,
-	0x32, 0xa6, 0x9c, 0xef, 0xa9, 0xa1, 0x35, 0x78, 0xb7, 0xc0, 0x7d, 0x4c, 0x6a, 0xaa, 0x5a, 0xa1,
-	0x73, 0x79, 0xfc, 0xbd, 0xc4, 0x1a, 0x6c, 0xdd, 0x29, 0x62, 0x85, 0x4f, 0xa4, 0x7f, 0x90, 0x98,
-	0x0f, 0xd0, 0x83, 0xa5, 0x12, 0x5d, 0x21, 0x85, 0xb1, 0x59, 0xc5, 0x63, 0x9c, 0x7a, 0x3a, 0x7f,
-	0xf2, 0x5c, 0xfc, 0xd8, 0x73, 0xfb, 0x0a, 0xff, 0x1f, 0x78, 0xf7, 0x4f, 0x54, 0xb5, 0x79, 0x4a,
-	0x78, 0x03, 0x27, 0xb7, 0x7c, 0xe3, 0xd4, 0x1e, 0x87, 0xf1, 0x27, 0x35, 0xff, 0x8b, 0x5a, 0x30,
-	0xc3, 0x0d, 0x80, 0xc1, 0x79, 0xf5, 0x53, 0x6d, 0x7f, 0x1a, 0x82, 0x59, 0xb2, 0xe0, 0x74, 0xf5,
-	0x11, 0x00, 0x00, 0xff, 0xff, 0xbd, 0xdc, 0x77, 0xc3, 0x82, 0x02, 0x00, 0x00,
+	// 504 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0x5d, 0x8f, 0xd2, 0x40,
+	0x14, 0xb5, 0xa5, 0x65, 0xc3, 0xad, 0x26, 0xbb, 0x37, 0x26, 0x0c, 0xd5, 0x08, 0xce, 0xd3, 0x3e,
+	0x95, 0x04, 0x71, 0xa3, 0x3e, 0x99, 0xac, 0x3e, 0x98, 0x68, 0xd4, 0xee, 0x92, 0xf8, 0x3a, 0xd0,
+	0x71, 0x6d, 0xa4, 0xb4, 0xb6, 0x03, 0x49, 0x7f, 0x85, 0x3f, 0xcb, 0x5f, 0xe2, 0xff, 0x30, 0x9d,
+	0x0f, 0x18, 0x5c, 0x9a, 0x55, 0x9e, 0xe8, 0xcc, 0x3d, 0xe7, 0x70, 0xee, 0xc9, 0xbd, 0x03, 0x58,
+	0x94, 0xb9, 0xc8, 0xc7, 0x19, 0xab, 0x13, 0x56, 0x47, 0xf2, 0x80, 0xbe, 0xfc, 0x09, 0x87, 0x37,
+	0x79, 0x7e, 0xb3, 0xe4, 0x63, 0x79, 0x9a, 0xaf, 0xbf, 0x8e, 0x45, 0x9a, 0xf1, 0x4a, 0xb0, 0xac,
+	0x50, 0x38, 0x8a, 0x70, 0xfa, 0x3e, 0xad, 0xc4, 0x75, 0x5d, 0xf0, 0x2a, 0xe6, 0x3f, 0xd6, 0xbc,
+	0x12, 0xf4, 0x02, 0xce, 0xac, 0xbb, 0xaa, 0xc8, 0x57, 0x15, 0xc7, 0xa7, 0xe0, 0x8b, 0xe6, 0x82,
+	0x38, 0xa3, 0xce, 0x79, 0x30, 0x09, 0x14, 0x3f, 0x6a, 0x40, 0xb1, 0xaa, 0xd0, 0x4f, 0x40, 0x2e,
+	0x4b, 0xce, 0x04, 0xff, 0x38, 0xaf, 0x78, 0xb9, 0x61, 0x22, 0xcd, 0x57, 0x5a, 0x13, 0xa7, 0x10,
+	0xe4, 0xbb, 0x5b, 0xe2, 0x8c, 0x9c, 0xf3, 0x60, 0x82, 0x5a, 0xc4, 0xc6, 0xdb, 0x30, 0xfa, 0x19,
+	0x06, 0x07, 0x14, 0xb5, 0xa3, 0xe3, 0x24, 0xa7, 0x70, 0xa6, 0x24, 0xa5, 0x73, 0xed, 0x6e, 0x08,
+	0x5e, 0xd3, 0x82, 0xd6, 0xd8, 0xeb, 0x4d, 0x16, 0xe8, 0x73, 0x40, 0x9b, 0xa5, 0x1d, 0xdc, 0x49,
+	0x1b, 0x40, 0xbf, 0x49, 0xd2, 0x32, 0xb3, 0x0d, 0x39, 0x06, 0x72, 0xbb, 0xa4, 0x75, 0x2f, 0xe0,
+	0xbe, 0x65, 0xd9, 0x44, 0x7e, 0xa8, 0xb5, 0x3d, 0x1c, 0x7d, 0x0c, 0xde, 0x6c, 0xf6, 0xee, 0x0d,
+	0x3e, 0x04, 0x7f, 0xc3, 0x96, 0x6b, 0x65, 0xac, 0x17, 0xab, 0x03, 0xfd, 0xe9, 0x82, 0xd7, 0x78,
+	0xc3, 0x47, 0xe0, 0xa6, 0xc9, 0x5f, 0xa6, 0x1b, 0x5e, 0xec, 0xa6, 0x09, 0x22, 0x78, 0x2b, 0x96,
+	0x71, 0xe2, 0x4a, 0xaa, 0xfc, 0xc6, 0x31, 0x74, 0xab, 0xc5, 0x37, 0x9e, 0x31, 0xd2, 0x91, 0x4e,
+	0xfa, 0x56, 0xa7, 0xd1, 0x95, 0xac, 0xbc, 0x5d, 0x89, 0xb2, 0x8e, 0x35, 0x0c, 0xa7, 0x70, 0xb2,
+	0x90, 0x71, 0x25, 0xc4, 0x93, 0x7f, 0x13, 0x46, 0x6a, 0x10, 0x23, 0x33, 0x88, 0xd1, 0xb5, 0x19,
+	0xc4, 0xd8, 0x40, 0x1b, 0xd6, 0xba, 0x48, 0x24, 0xcb, 0xbf, 0x9b, 0xa5, 0xa1, 0xe1, 0x4b, 0x08,
+	0x2c, 0x0b, 0x78, 0x0a, 0x9d, 0xef, 0xbc, 0xd6, 0x9d, 0x37, 0x9f, 0xbb, 0x34, 0x5c, 0x2b, 0x8d,
+	0x57, 0xee, 0x0b, 0x87, 0xfe, 0x76, 0x20, 0xb0, 0xd2, 0xfc, 0xff, 0x60, 0xcc, 0x00, 0x74, 0x5a,
+	0x06, 0x00, 0x09, 0x9c, 0x14, 0xac, 0x5e, 0xe6, 0x4c, 0x05, 0xd1, 0x8b, 0xcd, 0xd1, 0x8e, 0xc8,
+	0x3f, 0x2a, 0xa2, 0xee, 0x3f, 0x47, 0x34, 0xf9, 0xe5, 0xc2, 0x83, 0x0f, 0xf2, 0x75, 0xb8, 0xe2,
+	0xe5, 0x26, 0x5d, 0x70, 0xfc, 0x62, 0xb6, 0xc0, 0x6e, 0x7f, 0xa8, 0xfd, 0xb7, 0x2d, 0x71, 0x38,
+	0x6a, 0x07, 0xa8, 0xc9, 0xa5, 0xf7, 0xf0, 0x12, 0x60, 0xb7, 0x29, 0x48, 0xf6, 0x18, 0xd6, 0xca,
+	0x85, 0x83, 0x03, 0x95, 0xad, 0xc8, 0x4c, 0xbd, 0x4a, 0xf6, 0x72, 0xe0, 0x13, 0x4d, 0x68, 0x59,
+	0xa8, 0x70, 0xd8, 0x5a, 0xdf, 0xca, 0xbe, 0x86, 0xde, 0xf6, 0x61, 0xc3, 0xbe, 0x85, 0xb7, 0x9f,
+	0xbf, 0x90, 0xdc, 0x2e, 0x18, 0x85, 0x79, 0x57, 0x96, 0x9e, 0xfd, 0x09, 0x00, 0x00, 0xff, 0xff,
+	0x23, 0x42, 0xbc, 0x57, 0x73, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -257,8 +575,10 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MaydayServiceClient interface {
-	CreateObservation(ctx context.Context, in *Observation, opts ...grpc.CallOption) (*Observation, error)
-	CreateType(ctx context.Context, in *Type, opts ...grpc.CallOption) (*Type, error)
+	CreateObservation(ctx context.Context, in *CreateObservationRequest, opts ...grpc.CallOption) (*CreateObservationResponse, error)
+	CreateType(ctx context.Context, in *CreateTypeRequest, opts ...grpc.CallOption) (*CreateTypeResponse, error)
+	ListObservations(ctx context.Context, in *ListObservationsRequest, opts ...grpc.CallOption) (*ListObservationsResponse, error)
+	ListTypes(ctx context.Context, in *ListTypesRequest, opts ...grpc.CallOption) (*ListTypesResponse, error)
 }
 
 type maydayServiceClient struct {
@@ -269,8 +589,8 @@ func NewMaydayServiceClient(cc *grpc.ClientConn) MaydayServiceClient {
 	return &maydayServiceClient{cc}
 }
 
-func (c *maydayServiceClient) CreateObservation(ctx context.Context, in *Observation, opts ...grpc.CallOption) (*Observation, error) {
-	out := new(Observation)
+func (c *maydayServiceClient) CreateObservation(ctx context.Context, in *CreateObservationRequest, opts ...grpc.CallOption) (*CreateObservationResponse, error) {
+	out := new(CreateObservationResponse)
 	err := c.cc.Invoke(ctx, "/proto.MaydayService/CreateObservation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -278,9 +598,27 @@ func (c *maydayServiceClient) CreateObservation(ctx context.Context, in *Observa
 	return out, nil
 }
 
-func (c *maydayServiceClient) CreateType(ctx context.Context, in *Type, opts ...grpc.CallOption) (*Type, error) {
-	out := new(Type)
+func (c *maydayServiceClient) CreateType(ctx context.Context, in *CreateTypeRequest, opts ...grpc.CallOption) (*CreateTypeResponse, error) {
+	out := new(CreateTypeResponse)
 	err := c.cc.Invoke(ctx, "/proto.MaydayService/CreateType", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *maydayServiceClient) ListObservations(ctx context.Context, in *ListObservationsRequest, opts ...grpc.CallOption) (*ListObservationsResponse, error) {
+	out := new(ListObservationsResponse)
+	err := c.cc.Invoke(ctx, "/proto.MaydayService/ListObservations", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *maydayServiceClient) ListTypes(ctx context.Context, in *ListTypesRequest, opts ...grpc.CallOption) (*ListTypesResponse, error) {
+	out := new(ListTypesResponse)
+	err := c.cc.Invoke(ctx, "/proto.MaydayService/ListTypes", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -289,19 +627,27 @@ func (c *maydayServiceClient) CreateType(ctx context.Context, in *Type, opts ...
 
 // MaydayServiceServer is the server API for MaydayService service.
 type MaydayServiceServer interface {
-	CreateObservation(context.Context, *Observation) (*Observation, error)
-	CreateType(context.Context, *Type) (*Type, error)
+	CreateObservation(context.Context, *CreateObservationRequest) (*CreateObservationResponse, error)
+	CreateType(context.Context, *CreateTypeRequest) (*CreateTypeResponse, error)
+	ListObservations(context.Context, *ListObservationsRequest) (*ListObservationsResponse, error)
+	ListTypes(context.Context, *ListTypesRequest) (*ListTypesResponse, error)
 }
 
 // UnimplementedMaydayServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedMaydayServiceServer struct {
 }
 
-func (*UnimplementedMaydayServiceServer) CreateObservation(ctx context.Context, req *Observation) (*Observation, error) {
+func (*UnimplementedMaydayServiceServer) CreateObservation(ctx context.Context, req *CreateObservationRequest) (*CreateObservationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateObservation not implemented")
 }
-func (*UnimplementedMaydayServiceServer) CreateType(ctx context.Context, req *Type) (*Type, error) {
+func (*UnimplementedMaydayServiceServer) CreateType(ctx context.Context, req *CreateTypeRequest) (*CreateTypeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateType not implemented")
+}
+func (*UnimplementedMaydayServiceServer) ListObservations(ctx context.Context, req *ListObservationsRequest) (*ListObservationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListObservations not implemented")
+}
+func (*UnimplementedMaydayServiceServer) ListTypes(ctx context.Context, req *ListTypesRequest) (*ListTypesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTypes not implemented")
 }
 
 func RegisterMaydayServiceServer(s *grpc.Server, srv MaydayServiceServer) {
@@ -309,7 +655,7 @@ func RegisterMaydayServiceServer(s *grpc.Server, srv MaydayServiceServer) {
 }
 
 func _MaydayService_CreateObservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Observation)
+	in := new(CreateObservationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -321,13 +667,13 @@ func _MaydayService_CreateObservation_Handler(srv interface{}, ctx context.Conte
 		FullMethod: "/proto.MaydayService/CreateObservation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MaydayServiceServer).CreateObservation(ctx, req.(*Observation))
+		return srv.(MaydayServiceServer).CreateObservation(ctx, req.(*CreateObservationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _MaydayService_CreateType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Type)
+	in := new(CreateTypeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -339,7 +685,43 @@ func _MaydayService_CreateType_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/proto.MaydayService/CreateType",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MaydayServiceServer).CreateType(ctx, req.(*Type))
+		return srv.(MaydayServiceServer).CreateType(ctx, req.(*CreateTypeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MaydayService_ListObservations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListObservationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MaydayServiceServer).ListObservations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.MaydayService/ListObservations",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MaydayServiceServer).ListObservations(ctx, req.(*ListObservationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MaydayService_ListTypes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTypesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MaydayServiceServer).ListTypes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.MaydayService/ListTypes",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MaydayServiceServer).ListTypes(ctx, req.(*ListTypesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -355,6 +737,14 @@ var _MaydayService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateType",
 			Handler:    _MaydayService_CreateType_Handler,
+		},
+		{
+			MethodName: "ListObservations",
+			Handler:    _MaydayService_ListObservations_Handler,
+		},
+		{
+			MethodName: "ListTypes",
+			Handler:    _MaydayService_ListTypes_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apt-get update -y && apt-get install unzip -y
 
-RUN go install -v github.com/golang/protobuf/protoc-gen-go
+RUN go get -u github.com/golang/protobuf/protoc-gen-go
 
 RUN mkdir -p /opt/proto && \
     cd /opt/proto && \

@@ -5,8 +5,40 @@ package proto;
 import "google/protobuf/timestamp.proto";
 
 service MaydayService {
-    rpc CreateObservation (Observation) returns (Observation) {}
-    rpc CreateType (Type) returns (Type) {}
+    rpc CreateObservation (CreateObservationRequest) returns (CreateObservationResponse) {}
+    rpc CreateType (CreateTypeRequest) returns (CreateTypeResponse) {}
+    rpc ListObservations (ListObservationsRequest) returns (ListObservationsResponse){}
+    rpc ListTypes(ListTypesRequest) returns (ListTypesResponse){}
+}
+
+message ListTypesRequest {
+
+}
+message ListTypesResponse{
+    repeated Type types = 1;
+}
+
+message CreateObservationRequest {
+    Observation observation = 1;
+}
+
+message CreateObservationResponse {
+    Observation observation = 1;
+}
+
+message CreateTypeRequest {
+    Type type = 1;
+}
+
+message CreateTypeResponse {
+    Type type = 1;
+}
+
+message ListObservationsRequest {
+
+}
+message ListObservationsResponse{
+    repeated Observation observations = 1;
 }
 
 message UUID {
@@ -18,7 +50,7 @@ message Type {
 
     string name = 2;
 
-    string schema = 3;
+    map<string, string> schema = 3;
 
     google.protobuf.Timestamp created = 4;
 

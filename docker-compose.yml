@@ -2,7 +2,22 @@ version: "3.4"
 services:
   mayday:
     build: .
+    command: "go run cmd/server/main.go"
     volumes:
       - .:/app
     tty: true
-
+    ports:
+      - "8050:8050"
+    networks:
+      - backend
+  client:
+    build: .
+    command: "go run cmd/server/main.go"
+    volumes:
+      - .:/app
+    tty: true
+    networks:
+      - backend
+networks:
+  backend:
+    driver: "bridge"
