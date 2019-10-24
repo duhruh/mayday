@@ -2,9 +2,10 @@ package cmd
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
+	"os"
 	"strings"
+	"text/tabwriter"
 
 	"github.com/docker/mayday/pkg/mayday"
 	"github.com/spf13/cobra"
@@ -39,12 +40,16 @@ func newObservationsCreateCommand(config MaydayConfig, clientProvider mayday.Cli
 
 			response, err := client.CreateObservation(context.TODO(), []byte(args[0]))
 			if err != nil {
-				println(err)
+				println(err.Error())
+				return
 			}
 
 			t := response.GetObservation()
-			bytes, _ := json.Marshal(t)
-			fmt.Printf("the response: %s\n", bytes)
+
+			w := tabwriter.NewWriter(os.Stdout, 0, 8, 0, '\t', 0)
+			fmt.Fprintln(w, "ID\tName\tPayload\tCreated\tUpdated")
+			fmt.Fprintf(w, "%s\t%s\t%v\t%v\t%v\n", t.GetId().GetValue(), t.GetName(), t.GetPayload(), t.GetCreated(), t.GetUpdated())
+			w.Flush()
 		},
 	}
 }
@@ -59,12 +64,16 @@ func newObservationListCommand(config MaydayConfig, clientProvider mayday.Client
 
 			response, err := client.ListObservations(context.TODO())
 			if err != nil {
-				println(err)
+				println(err.Error())
+				return
 			}
 
-			t := response.GetObservations()
-			bytes, _ := json.Marshal(t)
-			fmt.Printf("the response: %s\n", bytes)
+			w := tabwriter.NewWriter(os.Stdout, 0, 8, 0, '\t', 0)
+			fmt.Fprintln(w, "ID\tName\tPayload\tCreated\tUpdated")
+			for _, t := range response.GetObservations() {
+				fmt.Fprintf(w, "%s\t%s\t%v\t%v\t%v\n", t.GetId().GetValue(), t.GetName(), t.GetPayload(), t.GetCreated(), t.GetUpdated())
+			}
+			w.Flush()
 		},
 	}
 }

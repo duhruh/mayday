@@ -2,6 +2,7 @@ package mayday
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"time"
 
@@ -34,13 +35,20 @@ func (m server) CreateObservation(ctx context.Context, req *proto.CreateObservat
 	}
 	req.Observation.Id = id
 	now := time.Now()
-	secs := now.Unix()
 	req.Observation.Created = &timestamp.Timestamp{
-		Seconds: secs,
+		Seconds: now.Unix(),
+		Nanos:   int32(now.UnixNano()),
 	}
 	req.Observation.Updated = &timestamp.Timestamp{
-		Seconds: secs,
+		Seconds: now.Unix(),
+		Nanos:   int32(now.UnixNano()),
 	}
+
+	foundType := m.typeRepo.FindByID(req.Observation.GetType().GetId().GetValue())
+	if foundType == nil {
+		return nil, errors.New("unknown type")
+	}
+	req.Observation.Type = foundType
 	m.observationRepo.Create(req.Observation)
 
 	return &proto.CreateObservationResponse{
@@ -54,12 +62,13 @@ func (m server) CreateType(ctx context.Context, req *proto.CreateTypeRequest) (*
 	}
 	req.Type.Id = id
 	now := time.Now()
-	secs := now.Unix()
 	req.Type.Created = &timestamp.Timestamp{
-		Seconds: secs,
+		Seconds: now.Unix(),
+		Nanos:   int32(now.UnixNano()),
 	}
 	req.Type.Updated = &timestamp.Timestamp{
-		Seconds: secs,
+		Seconds: now.Unix(),
+		Nanos:   int32(now.UnixNano()),
 	}
 	m.typeRepo.Create(req.Type)
 

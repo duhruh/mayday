@@ -2,9 +2,10 @@ package cmd
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
+	"os"
 	"strings"
+	"text/tabwriter"
 
 	"github.com/docker/mayday/pkg/mayday"
 	"github.com/spf13/cobra"
@@ -43,8 +44,10 @@ func newTypesCreateCommand(config MaydayConfig, clientProvider mayday.ClientProv
 			}
 
 			t := response.GetType()
-			bytes, _ := json.Marshal(t)
-			fmt.Printf("the response: %s\n", bytes)
+			w := tabwriter.NewWriter(os.Stdout, 0, 8, 0, '\t', 0)
+			fmt.Fprintln(w, "ID\tName\tSchema\tCreated\tUpdated")
+			fmt.Fprintf(w, "%s\t%s\t%v\t%v\t%v\n", t.GetId().GetValue(), t.GetName(), t.GetSchema(), t.GetCreated(), t.GetUpdated())
+			w.Flush()
 		},
 	}
 }
@@ -61,10 +64,12 @@ func newTypesListCommand(config MaydayConfig, clientProvider mayday.ClientProvid
 			if err != nil {
 				println(err)
 			}
-
-			t := response.GetTypes()
-			bytes, _ := json.Marshal(t)
-			fmt.Printf("the response: %s\n", bytes)
+			w := tabwriter.NewWriter(os.Stdout, 0, 8, 0, '\t', 0)
+			fmt.Fprintln(w, "ID\tName\tSchema\tCreated\tUpdated")
+			for _, t := range response.GetTypes() {
+				fmt.Fprintf(w, "%s\t%s\t%v\t%v\t%v\n", t.GetId().GetValue(), t.GetName(), t.GetSchema(), t.GetCreated(), t.GetUpdated())
+			}
+			w.Flush()
 		},
 	}
 }

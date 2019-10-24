@@ -64,7 +64,7 @@ message Observation {
 
     Type type = 3;
 
-    string payload = 4;
+    map<string, string> payload = 4;
 
     google.protobuf.Timestamp created = 5;
 
