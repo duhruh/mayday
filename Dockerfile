@@ -1,4 +1,4 @@
-FROM golang
+FROM golang-alpine as base
 
 WORKDIR /app
 
@@ -18,3 +18,33 @@ RUN mkdir -p /opt/google && \
     curl https://github.com/googleapis/googleapis/archive/09c6bd212586c0de4823f4bafa72b7989200a67f.zip -o googleapis.zip -L && \
     unzip googleapis.zip && \
     mv googleapis-09c6bd212586c0de4823f4bafa72b7989200a67f googleapis
+
+
+FROM base as server-builder 
+
+RUN go build -i cmd/server/main.go
+
+
+FROM base as client-buidler
+
+RUN go build -i cmd/client/main.go
+
+
+FROM alpine as server
+
+RUN apk add --no-cache \
+        ca-certificates
+
+COPY --from=server-builder /app/mayday /app/mayday
+
+ENTRYPOINT ["/app/mayday"]
+
+
+FROM alpine as client
+
+RUN apk add --no-cache \
+        ca-certificates
+
+COPY --from=client-builder /app/mayday /app/mayday
+
+ENTRYPOINT ["/app/mayday"]

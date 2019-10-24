@@ -14,9 +14,9 @@ import (
 // NewObservationsCommand -
 func NewObservationsCommand(config MaydayConfig, clientProvider mayday.ClientProvider) *cobra.Command {
 	typesCommand := &cobra.Command{
-		Use:   "observations [string to echo]",
-		Short: "used to created and list observations",
-		Long:  `does things with observations`,
+		Use:   "observations [command]",
+		Short: "manipulate observation entities",
+		Long:  `basic CRUD on observation entities`,
 		Args:  cobra.MinimumNArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("observations: " + strings.Join(args, " "))
@@ -31,7 +31,7 @@ func NewObservationsCommand(config MaydayConfig, clientProvider mayday.ClientPro
 
 func newObservationsCreateCommand(config MaydayConfig, clientProvider mayday.ClientProvider) *cobra.Command {
 	return &cobra.Command{
-		Use:   "create [thing to create]",
+		Use:   "create [json entity]",
 		Short: "create observation",
 		Long:  `create observation`,
 		Args:  cobra.MinimumNArgs(1),

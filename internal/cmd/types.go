@@ -14,9 +14,9 @@ import (
 // NewTypesCommand -
 func NewTypesCommand(config MaydayConfig, clientProvider mayday.ClientProvider) *cobra.Command {
 	typesCommand := &cobra.Command{
-		Use:   "types [string to echo]",
-		Short: "used to created and list types",
-		Long:  `does things with types`,
+		Use:   "types [command]",
+		Short: "manipulate type entities",
+		Long:  `basic CRUD on type entities`,
 		Args:  cobra.MinimumNArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("types: " + strings.Join(args, " "))
@@ -31,7 +31,7 @@ func NewTypesCommand(config MaydayConfig, clientProvider mayday.ClientProvider) 
 
 func newTypesCreateCommand(config MaydayConfig, clientProvider mayday.ClientProvider) *cobra.Command {
 	return &cobra.Command{
-		Use:   "create [thing to create]",
+		Use:   "create [json entitiy]",
 		Short: "create type",
 		Long:  `create type`,
 		Args:  cobra.MinimumNArgs(1),
