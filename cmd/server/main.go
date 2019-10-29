@@ -1,22 +1,47 @@
 package main
 
 import (
-	"log"
-	"net"
+	"flag"
+	"os"
 
 	"github.com/docker/mayday/pkg/mayday"
-	"google.golang.org/grpc"
+	"github.com/sirupsen/logrus"
+)
+
+const (
+	defaultAppConfig = "mayday.toml"
+)
+
+var (
+	appConfig = flag.String("config", defaultAppConfig, "application config file")
 )
 
 func main() {
-	lis, err := net.Listen("tcp", ":8050")
+
+	flag.Parse()
+
+	file, err := os.Open(*appConfig)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		panic(err)
 	}
-	s := grpc.NewServer()
-	mayday.NewServer(s)
-	println("server listening")
-	if err := s.Serve(lis); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+
+	cfg, err := mayday.NewConfig(file)
+	if err != nil {
+		panic(err)
+	}
+
+	logger := logrus.New()
+
+	logger.SetLevel(cfg.LogLevel())
+
+	baseLogger := logger.WithFields(logrus.Fields{
+		"environment": cfg.AppEnvironment(),
+	})
+
+	maydayServer := mayday.NewServer(cfg, baseLogger)
+
+	baseLogger.Info("application starting")
+	if err := maydayServer.Start(); err != nil {
+		baseLogger.Errorf("failed to serve: %v", err)
 	}
 }

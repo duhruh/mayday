@@ -4,7 +4,10 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"net"
 	"time"
+
+	"github.com/sirupsen/logrus"
 
 	"github.com/docker/mayday/pkg/repository"
 	"github.com/docker/mayday/proto"
@@ -16,16 +19,35 @@ import (
 type server struct {
 	observationRepo repository.Observation
 	typeRepo        repository.Type
+	config          Config
+	logger          logrus.FieldLogger
+}
+
+// Server -
+type Server interface {
+	Start() error
 }
 
 // NewServer -
-func NewServer(g *grpc.Server) proto.MaydayServiceServer {
-	m := server{
+func NewServer(cfg Config, logger logrus.FieldLogger) Server {
+	return server{
 		observationRepo: repository.NewInMemoryObservation(),
 		typeRepo:        repository.NewInMemoryType(),
+		config:          cfg,
+		logger:          logger,
 	}
-	proto.RegisterMaydayServiceServer(g, m)
-	return m
+}
+
+func (m server) Start() error {
+	lis, err := net.Listen("tcp", m.config.GRPCPort())
+	if err != nil {
+		return err
+	}
+	grpcServer := grpc.NewServer()
+
+	proto.RegisterMaydayServiceServer(grpcServer, m)
+
+	return grpcServer.Serve(lis)
 }
 
 func (m server) CreateObservation(ctx context.Context, req *proto.CreateObservationRequest) (*proto.CreateObservationResponse, error) {
