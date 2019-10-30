@@ -40,7 +40,7 @@ func newTypesCreateCommand(config MaydayConfig, clientProvider mayday.ClientProv
 
 			response, err := client.CreateType(context.TODO(), []byte(args[0]))
 			if err != nil {
-				println(err)
+				println(err.Error())
 			}
 
 			t := response.GetType()
@@ -62,7 +62,7 @@ func newTypesListCommand(config MaydayConfig, clientProvider mayday.ClientProvid
 
 			response, err := client.ListTypes(context.TODO())
 			if err != nil {
-				println(err)
+				println(err.Error())
 			}
 			w := tabwriter.NewWriter(os.Stdout, 0, 8, 0, '\t', 0)
 			fmt.Fprintln(w, "ID\tName\tSchema\tCreated\tUpdated")

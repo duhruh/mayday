@@ -1,15 +1,19 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"os"
 
+	"github.com/docker/mayday/pkg/db"
 	"github.com/docker/mayday/pkg/mayday"
 	"github.com/sirupsen/logrus"
+
+	_ "github.com/lib/pq"
 )
 
 const (
-	defaultAppConfig = "mayday.toml"
+	defaultAppConfig = "configs/mayday.toml"
 )
 
 var (
@@ -38,10 +42,14 @@ func main() {
 		"environment": cfg.AppEnvironment(),
 	})
 
-	maydayServer := mayday.NewServer(cfg, baseLogger)
+	databaseConnection := db.NewConnection(cfg.DatabaseAdapter(), cfg.DatabaseDSN())
+
+	databaseConnection.Open()
+
+	maydayServer := mayday.NewServer(cfg, baseLogger, databaseConnection)
 
 	baseLogger.Info("application starting")
-	if err := maydayServer.Start(); err != nil {
+	if err := maydayServer.Start(context.TODO()); err != nil {
 		baseLogger.Errorf("failed to serve: %v", err)
 	}
 }

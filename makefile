@@ -1,6 +1,0 @@
-
-
-
-
-proto:
-	go generate ./...

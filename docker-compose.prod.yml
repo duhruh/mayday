@@ -1,0 +1,38 @@
+version: "3.4"
+services:
+  mayday:
+    build: 
+      image: ${DTR_ADDRESS_WITH_ACCOUNT}/mayday:${VERSION}-server
+      context: .
+      target: server
+    tty: true
+    ports:
+      - "8050:8050"
+    networks:
+      - backend
+  client:
+    build: 
+      image: ${DTR_ADDRESS_WITH_ACCOUNT}/mayday:${VERSION}-client
+      context: .
+      target: client
+    tty: true
+    networks:
+      - backend
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ${DATA_SAVE_PATH}/postgres:/var/lib/postgresql
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: "bridge"

@@ -53,8 +53,14 @@ func (c client) CreateType(ctx context.Context, j []byte) (*proto.CreateTypeResp
 	})
 }
 func (c client) ListObservations(ctx context.Context) (*proto.ListObservationsResponse, error) {
-	return c.grpcClient.ListObservations(ctx, &proto.ListObservationsRequest{})
+	return c.grpcClient.ListObservations(ctx, &proto.ListObservationsRequest{
+		Page:  0,
+		Limit: 100,
+	})
 }
 func (c client) ListTypes(ctx context.Context) (*proto.ListTypesResponse, error) {
-	return c.grpcClient.ListTypes(ctx, &proto.ListTypesRequest{})
+	return c.grpcClient.ListTypes(ctx, &proto.ListTypesRequest{
+		Page:  0,
+		Limit: 100,
+	})
 }

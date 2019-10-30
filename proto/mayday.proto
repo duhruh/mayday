@@ -12,7 +12,8 @@ service MaydayService {
 }
 
 message ListTypesRequest {
-
+    int32 page = 1;
+    int32 limit = 2;
 }
 message ListTypesResponse{
     repeated Type types = 1;
@@ -35,7 +36,8 @@ message CreateTypeResponse {
 }
 
 message ListObservationsRequest {
-
+    int32 page = 1;
+    int32 limit = 2;
 }
 message ListObservationsResponse{
     repeated Observation observations = 1;

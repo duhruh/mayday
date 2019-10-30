@@ -5,13 +5,13 @@ import (
 	"errors"
 	"fmt"
 	"net"
-	"time"
 
 	"github.com/sirupsen/logrus"
 
+	"github.com/docker/mayday/pkg/db"
 	"github.com/docker/mayday/pkg/repository"
 	"github.com/docker/mayday/proto"
-	"github.com/golang/protobuf/ptypes/timestamp"
+	"github.com/golang/protobuf/ptypes"
 	uuid "github.com/satori/go.uuid"
 	"google.golang.org/grpc"
 )
@@ -21,24 +21,32 @@ type server struct {
 	typeRepo        repository.Type
 	config          Config
 	logger          logrus.FieldLogger
+	databaseCon     db.Connection
 }
 
 // Server -
 type Server interface {
-	Start() error
+	Start(context.Context) error
 }
 
 // NewServer -
-func NewServer(cfg Config, logger logrus.FieldLogger) Server {
+func NewServer(cfg Config, logger logrus.FieldLogger, databaseCon db.Connection) Server {
 	return server{
-		observationRepo: repository.NewInMemoryObservation(),
-		typeRepo:        repository.NewInMemoryType(),
+		observationRepo: repository.NewObservation(databaseCon),
+		typeRepo:        repository.NewType(databaseCon),
 		config:          cfg,
 		logger:          logger,
+		databaseCon:     databaseCon,
 	}
 }
 
-func (m server) Start() error {
+func (m server) Start(ctx context.Context) error {
+	m.logger.Info("initializing database")
+	err := repository.Init(ctx, m.observationRepo, m.typeRepo)
+	if err != nil {
+		return err
+	}
+
 	lis, err := net.Listen("tcp", m.config.GRPCPort())
 	if err != nil {
 		return err
@@ -56,23 +64,22 @@ func (m server) CreateObservation(ctx context.Context, req *proto.CreateObservat
 		Value: fmt.Sprintf("%s", u),
 	}
 	req.Observation.Id = id
-	now := time.Now()
-	req.Observation.Created = &timestamp.Timestamp{
-		Seconds: now.Unix(),
-		Nanos:   int32(now.UnixNano()),
-	}
-	req.Observation.Updated = &timestamp.Timestamp{
-		Seconds: now.Unix(),
-		Nanos:   int32(now.UnixNano()),
-	}
+	now := ptypes.TimestampNow()
+	req.Observation.Created = now
+	req.Observation.Updated = now
 
-	foundType := m.typeRepo.FindByID(req.Observation.GetType().GetId().GetValue())
+	foundType, err := m.typeRepo.FindByID(ctx, req.Observation.GetType().GetId().GetValue())
+	if err != nil {
+		return nil, err
+	}
 	if foundType == nil {
 		return nil, errors.New("unknown type")
 	}
 	req.Observation.Type = foundType
-	m.observationRepo.Create(req.Observation)
-
+	err = m.observationRepo.Create(ctx, req.Observation)
+	if err != nil {
+		return nil, err
+	}
 	return &proto.CreateObservationResponse{
 		Observation: req.Observation,
 	}, nil
@@ -83,28 +90,34 @@ func (m server) CreateType(ctx context.Context, req *proto.CreateTypeRequest) (*
 		Value: fmt.Sprintf("%s", u),
 	}
 	req.Type.Id = id
-	now := time.Now()
-	req.Type.Created = &timestamp.Timestamp{
-		Seconds: now.Unix(),
-		Nanos:   int32(now.UnixNano()),
+
+	now := ptypes.TimestampNow()
+	req.Type.Created = now
+	req.Type.Updated = now
+	err := m.typeRepo.Create(ctx, req.Type)
+	if err != nil {
+		return nil, err
 	}
-	req.Type.Updated = &timestamp.Timestamp{
-		Seconds: now.Unix(),
-		Nanos:   int32(now.UnixNano()),
-	}
-	m.typeRepo.Create(req.Type)
 
 	return &proto.CreateTypeResponse{
 		Type: req.Type,
 	}, nil
 }
-func (m server) ListObservations(context.Context, *proto.ListObservationsRequest) (*proto.ListObservationsResponse, error) {
+func (m server) ListObservations(ctx context.Context, l *proto.ListObservationsRequest) (*proto.ListObservationsResponse, error) {
+	observations, err := m.observationRepo.List(ctx, int(l.GetLimit()), int(l.GetPage()))
+	if err != nil {
+		return nil, err
+	}
 	return &proto.ListObservationsResponse{
-		Observations: m.observationRepo.List(),
+		Observations: observations,
 	}, nil
 }
-func (m server) ListTypes(context.Context, *proto.ListTypesRequest) (*proto.ListTypesResponse, error) {
+func (m server) ListTypes(ctx context.Context, l *proto.ListTypesRequest) (*proto.ListTypesResponse, error) {
+	types, err := m.typeRepo.List(ctx, int(l.GetLimit()), int(l.GetPage()))
+	if err != nil {
+		return nil, err
+	}
 	return &proto.ListTypesResponse{
-		Types: m.typeRepo.List(),
+		Types: types,
 	}, nil
 }

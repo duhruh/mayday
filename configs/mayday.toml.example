@@ -1,0 +1,11 @@
+[grpc]
+    port = ":8050"
+[log]
+    level="debug"    
+[app]
+    environment="development"
+    name="mayday"
+[database]
+    [database.development]
+        adapter = "postgres"
+        dsn = "host=postgres user=mayday password=secret dbname=mayday sslmode=disable"

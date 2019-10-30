@@ -20,10 +20,18 @@ type grpcConfig struct {
 	Port string `toml:"port"`
 }
 
+type database struct {
+	Adapter string `toml:"adapter"`
+	DSN     string `toml:"dsn"`
+}
+
+type databaseMap map[string]database
+
 type config struct {
-	GRPC grpcConfig `toml:"grpc"`
-	Log  log        `toml:"log"`
-	App  app        `toml:"app"`
+	GRPC     grpcConfig  `toml:"grpc"`
+	Log      log         `toml:"log"`
+	App      app         `toml:"app"`
+	Database databaseMap `toml:"database"`
 }
 
 // Config -
@@ -31,6 +39,9 @@ type Config interface {
 	GRPCPort() string
 
 	LogLevel() logrus.Level
+
+	DatabaseAdapter() string
+	DatabaseDSN() string
 
 	AppEnvironment() string
 	IsProduction() bool
@@ -55,6 +66,13 @@ func NewConfig(file io.Reader) (Config, error) {
 	}
 
 	return c, nil
+}
+
+func (c config) DatabaseAdapter() string {
+	return c.Database[c.AppEnvironment()].Adapter
+}
+func (c config) DatabaseDSN() string {
+	return c.Database[c.AppEnvironment()].DSN
 }
 
 func (c config) GRPCPort() string {
