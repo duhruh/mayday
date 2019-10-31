@@ -5,7 +5,7 @@ services:
       context: .
       target: server-dev
     volumes:
-      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+      - ${APP_CODE_PATH_HOST:-.}:${APP_CODE_PATH_CONTAINER:-/app}
     tty: true
     ports:
       - "8050:8050"
@@ -16,7 +16,7 @@ services:
       context: .
       target: client-dev
     volumes:
-      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+      - ${APP_CODE_PATH_HOST:-.}:${APP_CODE_PATH_CONTAINER:-/app}
     tty: true
     networks:
       - backend
@@ -30,7 +30,7 @@ services:
       - ${DATA_SAVE_PATH}/postgres:/var/lib/postgresql
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
     ports:
-      - "${POSTGRES_PORT}:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     networks:
       - backend
 
