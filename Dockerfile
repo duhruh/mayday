@@ -34,7 +34,7 @@ FROM base as client-dev
 
 ENTRYPOINT [ "go", "run", "cmd/client/main.go" ]
 
-FROM base as client-buidler
+FROM base as client-builder
 
 RUN go build -o mayday -i cmd/client/main.go
 
