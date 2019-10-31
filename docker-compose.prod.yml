@@ -1,8 +1,8 @@
 version: "3.4"
 services:
   mayday:
+    image: ${DTR_ADDRESS_WITH_ACCOUNT}/mayday:${VERSION}-server
     build: 
-      image: ${DTR_ADDRESS_WITH_ACCOUNT}/mayday:${VERSION}-server
       context: .
       target: server
     tty: true
@@ -11,8 +11,8 @@ services:
     networks:
       - backend
   client:
+    image: ${DTR_ADDRESS_WITH_ACCOUNT}/mayday:${VERSION}-client
     build: 
-      image: ${DTR_ADDRESS_WITH_ACCOUNT}/mayday:${VERSION}-client
       context: .
       target: client
     tty: true
