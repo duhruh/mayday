@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage("build") {
             steps{
+                sh 'docker-compose run --entrypoint go client generate ./...'
                 sh 'docker-compose -f docker-compose.prod.yml build mayday client'
             }
         }
