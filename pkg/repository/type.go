@@ -23,6 +23,7 @@ const (
 	createTypeQuery = `INSERT INTO types (id,name,schema,created_at,updated_at) VALUES($1,$2,$3,$4,$5)`
 	selectTypeQuery = `SELECT * FROM types WHERE id=$1`
 	listTypes       = `SELECT * FROM types LIMIT $1 OFFSET $2`
+	deleteType      = `DELETE FROM types WHERE id = $1`
 )
 
 // Type -
@@ -31,6 +32,7 @@ type Type interface {
 	List(context.Context, int, int) ([]*proto.Type, error)
 	FindByID(context.Context, string) (*proto.Type, error)
 	Init(context.Context) error
+	Delete(context.Context, *proto.Type) error
 }
 
 type typeRepo struct {
@@ -94,6 +96,20 @@ func (t typeRepo) List(ctx context.Context, limit, page int) ([]*proto.Type, err
 func (t typeRepo) FindByID(ctx context.Context, id string) (*proto.Type, error) {
 	res := t.connection.QueryRowContext(ctx, selectTypeQuery, id)
 	return t.fromSQLRow(res)
+}
+
+func (t typeRepo) Delete(ctx context.Context, typ *proto.Type) error {
+	stmt, err := t.connection.PrepareContext(ctx, deleteType)
+	if err != nil {
+		return err
+	}
+
+	_, err = stmt.Exec(typ.GetId().GetValue())
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func (t typeRepo) fromSQLRow(row db.Scannable) (*proto.Type, error) {

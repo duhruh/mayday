@@ -7,8 +7,26 @@ import "google/protobuf/timestamp.proto";
 service MaydayService {
     rpc CreateObservation (CreateObservationRequest) returns (CreateObservationResponse) {}
     rpc CreateType (CreateTypeRequest) returns (CreateTypeResponse) {}
+    
+    rpc DeleteType(DeleteTypeRequest) returns (DeleteTypeResponse){}
+    rpc DeleteObservation(DeleteObservationRequest) returns(DeleteObservationResponse){}
+
     rpc ListObservations (ListObservationsRequest) returns (ListObservationsResponse){}
     rpc ListTypes(ListTypesRequest) returns (ListTypesResponse){}
+}
+
+message DeleteTypeRequest{
+    Type type = 1;
+}
+message DeleteTypeResponse{
+    Type type = 1;
+}
+
+message DeleteObservationRequest{
+    Observation observation = 1;
+}
+message DeleteObservationResponse{
+    Observation observation = 1;
 }
 
 message ListTypesRequest {

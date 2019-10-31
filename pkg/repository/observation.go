@@ -25,11 +25,13 @@ const (
 	createObservationQuery = `INSERT INTO observations (id,name,types_id,payload,created_at,updated_at) VALUES($1,$2,$3,$4,$5,$6)`
 	selectObservationQuery = `SELECT * FROM observations WHERE id=$1`
 	listObservations       = `SELECT * FROM observations LIMIT $1 OFFSET $2`
+	deleteObservation      = `DELETE FROM observations WHERE id = $1`
 )
 
 // Observation -
 type Observation interface {
 	Create(context.Context, *proto.Observation) error
+	Delete(context.Context, *proto.Observation) error
 	List(context.Context, int, int) ([]*proto.Observation, error)
 	Init(context.Context) error
 }
@@ -91,6 +93,20 @@ func (o observation) List(ctx context.Context, limit int, page int) ([]*proto.Ob
 	}
 
 	return o.fromSQLRows(res)
+}
+
+func (o observation) Delete(ctx context.Context, obs *proto.Observation) error {
+	stmt, err := o.connection.PrepareContext(ctx, deleteObservation)
+	if err != nil {
+		return err
+	}
+
+	_, err = stmt.Exec(obs.GetId().GetValue())
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func (o observation) fromSQLRow(row db.Scannable) (*proto.Observation, error) {

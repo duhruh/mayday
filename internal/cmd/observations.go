@@ -25,6 +25,7 @@ func NewObservationsCommand(config MaydayConfig, clientProvider mayday.ClientPro
 
 	typesCommand.AddCommand(newObservationsCreateCommand(config, clientProvider))
 	typesCommand.AddCommand(newObservationListCommand(config, clientProvider))
+	typesCommand.AddCommand(newObservationsDeleteCommand(config, clientProvider))
 
 	return typesCommand
 }
@@ -39,6 +40,31 @@ func newObservationsCreateCommand(config MaydayConfig, clientProvider mayday.Cli
 			client := clientProvider.Get()
 
 			response, err := client.CreateObservation(context.TODO(), []byte(args[0]))
+			if err != nil {
+				println(err.Error())
+				return
+			}
+
+			t := response.GetObservation()
+
+			w := tabwriter.NewWriter(os.Stdout, 0, 8, 0, '\t', 0)
+			fmt.Fprintln(w, "ID\tName\tPayload\tCreated\tUpdated")
+			fmt.Fprintf(w, "%s\t%s\t%v\t%v\t%v\n", t.GetId().GetValue(), t.GetName(), t.GetPayload(), t.GetCreated(), t.GetUpdated())
+			w.Flush()
+		},
+	}
+}
+
+func newObservationsDeleteCommand(config MaydayConfig, clientProvider mayday.ClientProvider) *cobra.Command {
+	return &cobra.Command{
+		Use:   "delete [json entity]",
+		Short: "delete observation",
+		Long:  `delete observation`,
+		Args:  cobra.MinimumNArgs(1),
+		Run: func(c *cobra.Command, args []string) {
+			client := clientProvider.Get()
+
+			response, err := client.DeleteObservation(context.TODO(), []byte(args[0]))
 			if err != nil {
 				println(err.Error())
 				return

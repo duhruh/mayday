@@ -14,6 +14,8 @@ type Client interface {
 	CreateType(context.Context, []byte) (*proto.CreateTypeResponse, error)
 	ListObservations(context.Context) (*proto.ListObservationsResponse, error)
 	ListTypes(context.Context) (*proto.ListTypesResponse, error)
+	DeleteObservation(context.Context, []byte) (*proto.DeleteObservationResponse, error)
+	DeleteType(context.Context, []byte) (*proto.DeleteTypeResponse, error)
 }
 
 type client struct {
@@ -49,6 +51,31 @@ func (c client) CreateType(ctx context.Context, j []byte) (*proto.CreateTypeResp
 	}
 
 	return c.grpcClient.CreateType(ctx, &proto.CreateTypeRequest{
+		Type: protoTypes,
+	})
+}
+
+func (c client) DeleteObservation(ctx context.Context, j []byte) (*proto.DeleteObservationResponse, error) {
+	observation := &proto.Observation{}
+
+	err := json.Unmarshal(j, observation)
+	if err != nil {
+		return nil, err
+	}
+
+	return c.grpcClient.DeleteObservation(ctx, &proto.DeleteObservationRequest{
+		Observation: observation,
+	})
+}
+func (c client) DeleteType(ctx context.Context, j []byte) (*proto.DeleteTypeResponse, error) {
+	protoTypes := &proto.Type{}
+
+	err := json.Unmarshal(j, protoTypes)
+	if err != nil {
+		return nil, err
+	}
+
+	return c.grpcClient.DeleteType(ctx, &proto.DeleteTypeRequest{
 		Type: protoTypes,
 	})
 }

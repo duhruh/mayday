@@ -121,3 +121,24 @@ func (m server) ListTypes(ctx context.Context, l *proto.ListTypesRequest) (*prot
 		Types: types,
 	}, nil
 }
+
+func (m server) DeleteType(ctx context.Context, typ *proto.DeleteTypeRequest) (*proto.DeleteTypeResponse, error) {
+	err := m.typeRepo.Delete(ctx, typ.GetType())
+	if err != nil {
+		return nil, err
+	}
+
+	return &proto.DeleteTypeResponse{
+		Type: typ.GetType(),
+	}, nil
+}
+func (m server) DeleteObservation(ctx context.Context, obs *proto.DeleteObservationRequest) (*proto.DeleteObservationResponse, error) {
+	err := m.observationRepo.Delete(ctx, obs.GetObservation())
+	if err != nil {
+		return nil, err
+	}
+
+	return &proto.DeleteObservationResponse{
+		Observation: obs.GetObservation(),
+	}, nil
+}

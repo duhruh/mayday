@@ -25,6 +25,162 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type DeleteTypeRequest struct {
+	Type                 *Type    `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteTypeRequest) Reset()         { *m = DeleteTypeRequest{} }
+func (m *DeleteTypeRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteTypeRequest) ProtoMessage()    {}
+func (*DeleteTypeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{0}
+}
+
+func (m *DeleteTypeRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteTypeRequest.Unmarshal(m, b)
+}
+func (m *DeleteTypeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteTypeRequest.Marshal(b, m, deterministic)
+}
+func (m *DeleteTypeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteTypeRequest.Merge(m, src)
+}
+func (m *DeleteTypeRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteTypeRequest.Size(m)
+}
+func (m *DeleteTypeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteTypeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteTypeRequest proto.InternalMessageInfo
+
+func (m *DeleteTypeRequest) GetType() *Type {
+	if m != nil {
+		return m.Type
+	}
+	return nil
+}
+
+type DeleteTypeResponse struct {
+	Type                 *Type    `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteTypeResponse) Reset()         { *m = DeleteTypeResponse{} }
+func (m *DeleteTypeResponse) String() string { return proto.CompactTextString(m) }
+func (*DeleteTypeResponse) ProtoMessage()    {}
+func (*DeleteTypeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{1}
+}
+
+func (m *DeleteTypeResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteTypeResponse.Unmarshal(m, b)
+}
+func (m *DeleteTypeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteTypeResponse.Marshal(b, m, deterministic)
+}
+func (m *DeleteTypeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteTypeResponse.Merge(m, src)
+}
+func (m *DeleteTypeResponse) XXX_Size() int {
+	return xxx_messageInfo_DeleteTypeResponse.Size(m)
+}
+func (m *DeleteTypeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteTypeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteTypeResponse proto.InternalMessageInfo
+
+func (m *DeleteTypeResponse) GetType() *Type {
+	if m != nil {
+		return m.Type
+	}
+	return nil
+}
+
+type DeleteObservationRequest struct {
+	Observation          *Observation `protobuf:"bytes,1,opt,name=observation,proto3" json:"observation,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
+}
+
+func (m *DeleteObservationRequest) Reset()         { *m = DeleteObservationRequest{} }
+func (m *DeleteObservationRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteObservationRequest) ProtoMessage()    {}
+func (*DeleteObservationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{2}
+}
+
+func (m *DeleteObservationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteObservationRequest.Unmarshal(m, b)
+}
+func (m *DeleteObservationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteObservationRequest.Marshal(b, m, deterministic)
+}
+func (m *DeleteObservationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteObservationRequest.Merge(m, src)
+}
+func (m *DeleteObservationRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteObservationRequest.Size(m)
+}
+func (m *DeleteObservationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteObservationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteObservationRequest proto.InternalMessageInfo
+
+func (m *DeleteObservationRequest) GetObservation() *Observation {
+	if m != nil {
+		return m.Observation
+	}
+	return nil
+}
+
+type DeleteObservationResponse struct {
+	Observation          *Observation `protobuf:"bytes,1,opt,name=observation,proto3" json:"observation,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
+}
+
+func (m *DeleteObservationResponse) Reset()         { *m = DeleteObservationResponse{} }
+func (m *DeleteObservationResponse) String() string { return proto.CompactTextString(m) }
+func (*DeleteObservationResponse) ProtoMessage()    {}
+func (*DeleteObservationResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_731e6f5f9de35653, []int{3}
+}
+
+func (m *DeleteObservationResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteObservationResponse.Unmarshal(m, b)
+}
+func (m *DeleteObservationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteObservationResponse.Marshal(b, m, deterministic)
+}
+func (m *DeleteObservationResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteObservationResponse.Merge(m, src)
+}
+func (m *DeleteObservationResponse) XXX_Size() int {
+	return xxx_messageInfo_DeleteObservationResponse.Size(m)
+}
+func (m *DeleteObservationResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteObservationResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteObservationResponse proto.InternalMessageInfo
+
+func (m *DeleteObservationResponse) GetObservation() *Observation {
+	if m != nil {
+		return m.Observation
+	}
+	return nil
+}
+
 type ListTypesRequest struct {
 	Page                 int32    `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
 	Limit                int32    `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
@@ -37,7 +193,7 @@ func (m *ListTypesRequest) Reset()         { *m = ListTypesRequest{} }
 func (m *ListTypesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListTypesRequest) ProtoMessage()    {}
 func (*ListTypesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{0}
+	return fileDescriptor_731e6f5f9de35653, []int{4}
 }
 
 func (m *ListTypesRequest) XXX_Unmarshal(b []byte) error {
@@ -83,7 +239,7 @@ func (m *ListTypesResponse) Reset()         { *m = ListTypesResponse{} }
 func (m *ListTypesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListTypesResponse) ProtoMessage()    {}
 func (*ListTypesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{1}
+	return fileDescriptor_731e6f5f9de35653, []int{5}
 }
 
 func (m *ListTypesResponse) XXX_Unmarshal(b []byte) error {
@@ -122,7 +278,7 @@ func (m *CreateObservationRequest) Reset()         { *m = CreateObservationReque
 func (m *CreateObservationRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateObservationRequest) ProtoMessage()    {}
 func (*CreateObservationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{2}
+	return fileDescriptor_731e6f5f9de35653, []int{6}
 }
 
 func (m *CreateObservationRequest) XXX_Unmarshal(b []byte) error {
@@ -161,7 +317,7 @@ func (m *CreateObservationResponse) Reset()         { *m = CreateObservationResp
 func (m *CreateObservationResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateObservationResponse) ProtoMessage()    {}
 func (*CreateObservationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{3}
+	return fileDescriptor_731e6f5f9de35653, []int{7}
 }
 
 func (m *CreateObservationResponse) XXX_Unmarshal(b []byte) error {
@@ -200,7 +356,7 @@ func (m *CreateTypeRequest) Reset()         { *m = CreateTypeRequest{} }
 func (m *CreateTypeRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateTypeRequest) ProtoMessage()    {}
 func (*CreateTypeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{4}
+	return fileDescriptor_731e6f5f9de35653, []int{8}
 }
 
 func (m *CreateTypeRequest) XXX_Unmarshal(b []byte) error {
@@ -239,7 +395,7 @@ func (m *CreateTypeResponse) Reset()         { *m = CreateTypeResponse{} }
 func (m *CreateTypeResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateTypeResponse) ProtoMessage()    {}
 func (*CreateTypeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{5}
+	return fileDescriptor_731e6f5f9de35653, []int{9}
 }
 
 func (m *CreateTypeResponse) XXX_Unmarshal(b []byte) error {
@@ -279,7 +435,7 @@ func (m *ListObservationsRequest) Reset()         { *m = ListObservationsRequest
 func (m *ListObservationsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListObservationsRequest) ProtoMessage()    {}
 func (*ListObservationsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{6}
+	return fileDescriptor_731e6f5f9de35653, []int{10}
 }
 
 func (m *ListObservationsRequest) XXX_Unmarshal(b []byte) error {
@@ -325,7 +481,7 @@ func (m *ListObservationsResponse) Reset()         { *m = ListObservationsRespon
 func (m *ListObservationsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListObservationsResponse) ProtoMessage()    {}
 func (*ListObservationsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{7}
+	return fileDescriptor_731e6f5f9de35653, []int{11}
 }
 
 func (m *ListObservationsResponse) XXX_Unmarshal(b []byte) error {
@@ -364,7 +520,7 @@ func (m *UUID) Reset()         { *m = UUID{} }
 func (m *UUID) String() string { return proto.CompactTextString(m) }
 func (*UUID) ProtoMessage()    {}
 func (*UUID) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{8}
+	return fileDescriptor_731e6f5f9de35653, []int{12}
 }
 
 func (m *UUID) XXX_Unmarshal(b []byte) error {
@@ -407,7 +563,7 @@ func (m *Type) Reset()         { *m = Type{} }
 func (m *Type) String() string { return proto.CompactTextString(m) }
 func (*Type) ProtoMessage()    {}
 func (*Type) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{9}
+	return fileDescriptor_731e6f5f9de35653, []int{13}
 }
 
 func (m *Type) XXX_Unmarshal(b []byte) error {
@@ -479,7 +635,7 @@ func (m *Observation) Reset()         { *m = Observation{} }
 func (m *Observation) String() string { return proto.CompactTextString(m) }
 func (*Observation) ProtoMessage()    {}
 func (*Observation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_731e6f5f9de35653, []int{10}
+	return fileDescriptor_731e6f5f9de35653, []int{14}
 }
 
 func (m *Observation) XXX_Unmarshal(b []byte) error {
@@ -543,6 +699,10 @@ func (m *Observation) GetUpdated() *timestamp.Timestamp {
 }
 
 func init() {
+	proto.RegisterType((*DeleteTypeRequest)(nil), "proto.DeleteTypeRequest")
+	proto.RegisterType((*DeleteTypeResponse)(nil), "proto.DeleteTypeResponse")
+	proto.RegisterType((*DeleteObservationRequest)(nil), "proto.DeleteObservationRequest")
+	proto.RegisterType((*DeleteObservationResponse)(nil), "proto.DeleteObservationResponse")
 	proto.RegisterType((*ListTypesRequest)(nil), "proto.ListTypesRequest")
 	proto.RegisterType((*ListTypesResponse)(nil), "proto.ListTypesResponse")
 	proto.RegisterType((*CreateObservationRequest)(nil), "proto.CreateObservationRequest")
@@ -561,41 +721,45 @@ func init() {
 func init() { proto.RegisterFile("proto/mayday.proto", fileDescriptor_731e6f5f9de35653) }
 
 var fileDescriptor_731e6f5f9de35653 = []byte{
-	// 543 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0x4d, 0x6f, 0xd3, 0x40,
-	0x10, 0x25, 0x8e, 0x9d, 0x2a, 0xe3, 0x22, 0xb5, 0x23, 0xa4, 0xb8, 0x06, 0x91, 0xe0, 0x53, 0x4f,
-	0x8e, 0x14, 0x42, 0x45, 0x2b, 0x0e, 0x48, 0x81, 0x03, 0x12, 0x88, 0xe2, 0x36, 0x12, 0xd7, 0x4d,
-	0xbc, 0x04, 0x8b, 0x38, 0x36, 0xf6, 0x26, 0x92, 0x7f, 0x05, 0xff, 0x89, 0x0b, 0x7f, 0x0b, 0xed,
-	0x57, 0xb2, 0x21, 0xb1, 0x4a, 0x72, 0xb2, 0x77, 0xe7, 0xcd, 0xdb, 0x37, 0x6f, 0x77, 0x06, 0x30,
-	0x2f, 0x32, 0x96, 0xf5, 0x53, 0x52, 0xc5, 0xa4, 0x0a, 0xc5, 0x02, 0x1d, 0xf1, 0xf1, 0xbb, 0xb3,
-	0x2c, 0x9b, 0xcd, 0x69, 0x5f, 0xac, 0x26, 0xcb, 0x6f, 0x7d, 0x96, 0xa4, 0xb4, 0x64, 0x24, 0xcd,
-	0x25, 0x2e, 0x78, 0x03, 0x67, 0x1f, 0x93, 0x92, 0xdd, 0x57, 0x39, 0x2d, 0x23, 0xfa, 0x73, 0x49,
-	0x4b, 0x86, 0x08, 0x76, 0x4e, 0x66, 0xd4, 0x6b, 0xf4, 0x1a, 0x97, 0x4e, 0x24, 0xfe, 0xf1, 0x09,
-	0x38, 0xf3, 0x24, 0x4d, 0x98, 0x67, 0x89, 0x4d, 0xb9, 0x08, 0xae, 0xe0, 0xdc, 0xc8, 0x2e, 0xf3,
-	0x6c, 0x51, 0x52, 0x7c, 0x01, 0x0e, 0xe3, 0x1b, 0x5e, 0xa3, 0xd7, 0xbc, 0x74, 0x07, 0xae, 0x3c,
-	0x29, 0xe4, 0xa0, 0x48, 0x46, 0x82, 0x5b, 0xf0, 0x46, 0x05, 0x25, 0x8c, 0x7e, 0x9e, 0x94, 0xb4,
-	0x58, 0x11, 0x96, 0x64, 0x0b, 0x7d, 0xfa, 0x10, 0xdc, 0x6c, 0xb3, 0x2b, 0x44, 0xb8, 0x03, 0x54,
-	0x24, 0x26, 0xde, 0x84, 0x05, 0x5f, 0xe0, 0x62, 0x0f, 0xa3, 0x52, 0x74, 0x1c, 0xe5, 0x10, 0xce,
-	0x25, 0xa5, 0x50, 0xae, 0xd4, 0x75, 0xc1, 0xe6, 0x25, 0x28, 0x8e, 0xad, 0xda, 0x44, 0x20, 0x78,
-	0x05, 0x68, 0x66, 0x29, 0x05, 0x0f, 0xa6, 0x8d, 0xa0, 0xc3, 0x9d, 0x34, 0xc4, 0x1c, 0x71, 0x1d,
-	0x11, 0x78, 0xbb, 0x24, 0x4a, 0xc1, 0x15, 0x9c, 0x1a, 0xc5, 0xe9, 0xcb, 0xd9, 0x67, 0xc2, 0x16,
-	0x2e, 0x78, 0x06, 0xf6, 0x78, 0xfc, 0xe1, 0x1d, 0x3f, 0x71, 0x45, 0xe6, 0x4b, 0x29, 0xa3, 0x1d,
-	0xc9, 0x45, 0xf0, 0xcb, 0x02, 0x9b, 0x57, 0x81, 0x4f, 0xc1, 0x4a, 0xe2, 0x7f, 0xca, 0xe3, 0x79,
-	0x91, 0x95, 0xc4, 0xbc, 0x82, 0x05, 0x49, 0xa9, 0x10, 0xdb, 0x8e, 0xc4, 0x3f, 0xf6, 0xa1, 0x55,
-	0x4e, 0xbf, 0xd3, 0x94, 0x78, 0x4d, 0xa1, 0xa4, 0x63, 0x78, 0x12, 0xde, 0x89, 0xc8, 0xfb, 0x05,
-	0x2b, 0xaa, 0x48, 0xc1, 0x70, 0x08, 0x27, 0x53, 0x61, 0x6c, 0xec, 0xd9, 0xe2, 0x18, 0x3f, 0x94,
-	0x8f, 0x3b, 0xd4, 0x8f, 0x3b, 0xbc, 0xd7, 0x8f, 0x3b, 0xd2, 0x50, 0x9e, 0xb5, 0xcc, 0x63, 0x91,
-	0xe5, 0x3c, 0x9c, 0xa5, 0xa0, 0xfe, 0x35, 0xb8, 0x86, 0x04, 0x3c, 0x83, 0xe6, 0x0f, 0x5a, 0xa9,
-	0xca, 0xf9, 0xef, 0xc6, 0x0d, 0xcb, 0x70, 0xe3, 0xc6, 0x7a, 0xdd, 0x08, 0x7e, 0x5b, 0xe0, 0x1a,
-	0x6e, 0x1e, 0x6e, 0x8c, 0x7e, 0x2a, 0xcd, 0x9a, 0xa7, 0x82, 0xd7, 0x70, 0x92, 0x93, 0x6a, 0x9e,
-	0x11, 0x6e, 0x04, 0xb7, 0xae, 0xbb, 0x7b, 0x89, 0xe1, 0xad, 0x44, 0x48, 0x0b, 0x35, 0xde, 0xf4,
-	0xd0, 0x39, 0xca, 0xc3, 0xd6, 0xff, 0x7b, 0x78, 0x03, 0xa7, 0xa6, 0x88, 0x43, 0x4c, 0x1c, 0xfc,
-	0xb1, 0xe0, 0xf1, 0x27, 0x31, 0xce, 0xee, 0x68, 0xb1, 0x4a, 0xa6, 0x14, 0xbf, 0xea, 0x66, 0x34,
-	0xbd, 0xd5, 0x85, 0xd7, 0xcd, 0x12, 0xbf, 0x57, 0x0f, 0x90, 0x6d, 0x11, 0x3c, 0xc2, 0x11, 0xc0,
-	0xa6, 0x61, 0xd1, 0xdb, 0xca, 0x30, 0x3a, 0xdf, 0xbf, 0xd8, 0x13, 0x59, 0x93, 0x8c, 0xe5, 0x18,
-	0x35, 0x3b, 0x0f, 0x9f, 0xab, 0x84, 0x9a, 0xbe, 0xf6, 0xbb, 0xb5, 0xf1, 0x35, 0xed, 0x5b, 0x68,
-	0xaf, 0xe7, 0x2b, 0x76, 0x0c, 0xbc, 0x39, 0xaf, 0x7d, 0x6f, 0x37, 0xa0, 0x19, 0x26, 0x2d, 0x11,
-	0x7a, 0xf9, 0x37, 0x00, 0x00, 0xff, 0xff, 0x10, 0x1f, 0xea, 0x39, 0x24, 0x06, 0x00, 0x00,
+	// 598 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x55, 0xd1, 0x6e, 0xd3, 0x3c,
+	0x14, 0x6e, 0xd3, 0xa4, 0x53, 0x4f, 0xf6, 0x4b, 0xab, 0xf5, 0x4b, 0xcd, 0x02, 0xa2, 0xc5, 0x57,
+	0x5c, 0xa5, 0xd2, 0x28, 0x13, 0x9b, 0xb8, 0x40, 0xea, 0xb8, 0x40, 0x02, 0x31, 0xb2, 0x55, 0xe2,
+	0xd6, 0x6d, 0x4c, 0x89, 0x48, 0x9a, 0x90, 0xb8, 0x95, 0xf2, 0x14, 0xbc, 0x13, 0x0f, 0xc3, 0x73,
+	0x20, 0xdb, 0x71, 0xea, 0x2d, 0x8d, 0xb6, 0x16, 0xae, 0x62, 0xe7, 0x7c, 0xe7, 0xf3, 0x39, 0x9f,
+	0x7d, 0xce, 0x01, 0x94, 0x66, 0x09, 0x4b, 0xc6, 0x31, 0x29, 0x02, 0x52, 0x78, 0x62, 0x83, 0x2c,
+	0xf1, 0x71, 0x87, 0xcb, 0x24, 0x59, 0x46, 0x74, 0x2c, 0x76, 0xf3, 0xf5, 0xd7, 0x31, 0x0b, 0x63,
+	0x9a, 0x33, 0x12, 0xa7, 0x12, 0x87, 0x27, 0xd0, 0xbf, 0xa2, 0x11, 0x65, 0xf4, 0xb6, 0x48, 0xa9,
+	0x4f, 0x7f, 0xac, 0x69, 0xce, 0xd0, 0x10, 0x4c, 0x56, 0xa4, 0xd4, 0x69, 0x8f, 0xda, 0x2f, 0xec,
+	0x33, 0x5b, 0x42, 0x3d, 0x81, 0x10, 0x06, 0xfc, 0x0a, 0x90, 0xee, 0x95, 0xa7, 0xc9, 0x2a, 0xa7,
+	0x0f, 0xbb, 0x5d, 0x83, 0x23, 0xdd, 0x3e, 0xcd, 0x73, 0x9a, 0x6d, 0x08, 0x0b, 0x93, 0x95, 0x3a,
+	0x73, 0x02, 0x76, 0xb2, 0xfd, 0x5b, 0x72, 0xa0, 0x92, 0x43, 0xc7, 0xeb, 0x30, 0xfc, 0x19, 0x4e,
+	0x77, 0x30, 0x96, 0xf1, 0x1c, 0x46, 0xf9, 0x06, 0x4e, 0x3e, 0x84, 0x39, 0xe3, 0x61, 0xe7, 0x2a,
+	0x38, 0x04, 0x66, 0x4a, 0x96, 0x32, 0x33, 0xcb, 0x17, 0x6b, 0xf4, 0x3f, 0x58, 0x51, 0x18, 0x87,
+	0xcc, 0x31, 0xc4, 0x4f, 0xb9, 0xc1, 0xe7, 0xd0, 0xd7, 0xbc, 0xcb, 0x40, 0x9e, 0x83, 0xc5, 0xf3,
+	0xcf, 0x9d, 0xf6, 0xa8, 0x73, 0x5f, 0x19, 0x69, 0xe1, 0xd2, 0x4c, 0x33, 0x4a, 0xfe, 0xad, 0x34,
+	0x3b, 0x18, 0xff, 0x4a, 0x9a, 0x09, 0xf4, 0x25, 0xe5, 0xbe, 0x8f, 0x45, 0xf7, 0x7a, 0xec, 0x63,
+	0x99, 0xc2, 0x80, 0x2b, 0xa9, 0x05, 0x73, 0xc0, 0x75, 0xf8, 0xe0, 0xd4, 0x49, 0xca, 0x08, 0xce,
+	0xe1, 0x58, 0x4b, 0x4e, 0x5d, 0xce, 0x2e, 0x11, 0xee, 0xe0, 0xf0, 0x53, 0x30, 0x67, 0xb3, 0xf7,
+	0x57, 0xfc, 0xc4, 0x0d, 0x89, 0xd6, 0x32, 0x8c, 0x9e, 0x2f, 0x37, 0xf8, 0xa7, 0x01, 0x26, 0xcf,
+	0x02, 0x3d, 0x01, 0x23, 0x0c, 0xee, 0xa5, 0xc7, 0xfd, 0x7c, 0x23, 0x0c, 0x78, 0x06, 0x2b, 0x12,
+	0x53, 0x11, 0x6c, 0xcf, 0x17, 0x6b, 0x34, 0x86, 0x6e, 0xbe, 0xf8, 0x46, 0x63, 0xe2, 0x74, 0x44,
+	0x24, 0x03, 0x4d, 0x13, 0xef, 0x46, 0x58, 0xde, 0xad, 0x58, 0x56, 0xf8, 0x25, 0x0c, 0x4d, 0xe0,
+	0x68, 0x21, 0x84, 0x0d, 0x1c, 0x53, 0x1c, 0xe3, 0x7a, 0xb2, 0xdc, 0x3d, 0x55, 0xee, 0xde, 0xad,
+	0x2a, 0x77, 0x5f, 0x41, 0xb9, 0xd7, 0x3a, 0x0d, 0x84, 0x97, 0xf5, 0xb0, 0x57, 0x09, 0x75, 0x2f,
+	0xc0, 0xd6, 0x42, 0x40, 0x27, 0xd0, 0xf9, 0x4e, 0x8b, 0x32, 0x73, 0xbe, 0xdc, 0xaa, 0x61, 0x68,
+	0x6a, 0x5c, 0x1a, 0xaf, 0xdb, 0xf8, 0x97, 0x01, 0xb6, 0xa6, 0xe6, 0xfe, 0xc2, 0xa8, 0xa7, 0xd2,
+	0x69, 0x78, 0x2a, 0xe8, 0x02, 0x8e, 0x52, 0x52, 0x44, 0x09, 0xe1, 0x42, 0x70, 0xe9, 0x86, 0xf5,
+	0x4b, 0xf4, 0xae, 0x25, 0x42, 0x4a, 0xa8, 0xf0, 0xba, 0x86, 0xd6, 0x41, 0x1a, 0x76, 0x1f, 0xaf,
+	0xe1, 0x25, 0x1c, 0xeb, 0x41, 0xec, 0x23, 0xe2, 0xd9, 0xef, 0x0e, 0xfc, 0xf7, 0x51, 0x34, 0xf8,
+	0x1b, 0x9a, 0x6d, 0xc2, 0x05, 0x45, 0x5f, 0x54, 0x31, 0xea, 0xda, 0xaa, 0xc4, 0x9b, 0x7a, 0x89,
+	0x3b, 0x6a, 0x06, 0xc8, 0xb2, 0xc0, 0x2d, 0x34, 0x05, 0xd8, 0x16, 0x2c, 0x72, 0xee, 0x78, 0x68,
+	0x95, 0xef, 0x9e, 0xee, 0xb0, 0xe8, 0x24, 0xdb, 0x11, 0x51, 0x91, 0xd4, 0x66, 0x4d, 0x45, 0x52,
+	0x9f, 0x27, 0xb8, 0xc5, 0x73, 0xac, 0xb5, 0xf7, 0x2a, 0xc7, 0xa6, 0x51, 0x52, 0xe5, 0xd8, 0x38,
+	0x19, 0x70, 0x0b, 0xcd, 0x64, 0x97, 0xd7, 0x1b, 0x03, 0x7a, 0x56, 0xfa, 0x35, 0xb4, 0x1d, 0x77,
+	0xd8, 0x68, 0xaf, 0x68, 0xdf, 0x42, 0xaf, 0x6a, 0xff, 0x68, 0xa0, 0xe1, 0xf5, 0x71, 0xe2, 0x3a,
+	0x75, 0x83, 0x62, 0x98, 0x77, 0x85, 0xe9, 0xe5, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xca, 0xf7,
+	0x94, 0x80, 0xd5, 0x07, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -612,6 +776,8 @@ const _ = grpc.SupportPackageIsVersion4
 type MaydayServiceClient interface {
 	CreateObservation(ctx context.Context, in *CreateObservationRequest, opts ...grpc.CallOption) (*CreateObservationResponse, error)
 	CreateType(ctx context.Context, in *CreateTypeRequest, opts ...grpc.CallOption) (*CreateTypeResponse, error)
+	DeleteType(ctx context.Context, in *DeleteTypeRequest, opts ...grpc.CallOption) (*DeleteTypeResponse, error)
+	DeleteObservation(ctx context.Context, in *DeleteObservationRequest, opts ...grpc.CallOption) (*DeleteObservationResponse, error)
 	ListObservations(ctx context.Context, in *ListObservationsRequest, opts ...grpc.CallOption) (*ListObservationsResponse, error)
 	ListTypes(ctx context.Context, in *ListTypesRequest, opts ...grpc.CallOption) (*ListTypesResponse, error)
 }
@@ -642,6 +808,24 @@ func (c *maydayServiceClient) CreateType(ctx context.Context, in *CreateTypeRequ
 	return out, nil
 }
 
+func (c *maydayServiceClient) DeleteType(ctx context.Context, in *DeleteTypeRequest, opts ...grpc.CallOption) (*DeleteTypeResponse, error) {
+	out := new(DeleteTypeResponse)
+	err := c.cc.Invoke(ctx, "/proto.MaydayService/DeleteType", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *maydayServiceClient) DeleteObservation(ctx context.Context, in *DeleteObservationRequest, opts ...grpc.CallOption) (*DeleteObservationResponse, error) {
+	out := new(DeleteObservationResponse)
+	err := c.cc.Invoke(ctx, "/proto.MaydayService/DeleteObservation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *maydayServiceClient) ListObservations(ctx context.Context, in *ListObservationsRequest, opts ...grpc.CallOption) (*ListObservationsResponse, error) {
 	out := new(ListObservationsResponse)
 	err := c.cc.Invoke(ctx, "/proto.MaydayService/ListObservations", in, out, opts...)
@@ -664,6 +848,8 @@ func (c *maydayServiceClient) ListTypes(ctx context.Context, in *ListTypesReques
 type MaydayServiceServer interface {
 	CreateObservation(context.Context, *CreateObservationRequest) (*CreateObservationResponse, error)
 	CreateType(context.Context, *CreateTypeRequest) (*CreateTypeResponse, error)
+	DeleteType(context.Context, *DeleteTypeRequest) (*DeleteTypeResponse, error)
+	DeleteObservation(context.Context, *DeleteObservationRequest) (*DeleteObservationResponse, error)
 	ListObservations(context.Context, *ListObservationsRequest) (*ListObservationsResponse, error)
 	ListTypes(context.Context, *ListTypesRequest) (*ListTypesResponse, error)
 }
@@ -677,6 +863,12 @@ func (*UnimplementedMaydayServiceServer) CreateObservation(ctx context.Context, 
 }
 func (*UnimplementedMaydayServiceServer) CreateType(ctx context.Context, req *CreateTypeRequest) (*CreateTypeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateType not implemented")
+}
+func (*UnimplementedMaydayServiceServer) DeleteType(ctx context.Context, req *DeleteTypeRequest) (*DeleteTypeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteType not implemented")
+}
+func (*UnimplementedMaydayServiceServer) DeleteObservation(ctx context.Context, req *DeleteObservationRequest) (*DeleteObservationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteObservation not implemented")
 }
 func (*UnimplementedMaydayServiceServer) ListObservations(ctx context.Context, req *ListObservationsRequest) (*ListObservationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListObservations not implemented")
@@ -721,6 +913,42 @@ func _MaydayService_CreateType_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MaydayServiceServer).CreateType(ctx, req.(*CreateTypeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MaydayService_DeleteType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteTypeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MaydayServiceServer).DeleteType(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.MaydayService/DeleteType",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MaydayServiceServer).DeleteType(ctx, req.(*DeleteTypeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MaydayService_DeleteObservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteObservationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MaydayServiceServer).DeleteObservation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.MaydayService/DeleteObservation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MaydayServiceServer).DeleteObservation(ctx, req.(*DeleteObservationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -772,6 +1000,14 @@ var _MaydayService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateType",
 			Handler:    _MaydayService_CreateType_Handler,
+		},
+		{
+			MethodName: "DeleteType",
+			Handler:    _MaydayService_DeleteType_Handler,
+		},
+		{
+			MethodName: "DeleteObservation",
+			Handler:    _MaydayService_DeleteObservation_Handler,
 		},
 		{
 			MethodName: "ListObservations",

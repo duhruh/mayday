@@ -2,7 +2,7 @@ FROM golang:1.13-alpine as base
 
 WORKDIR /app
 
-RUN apk update && apk add unzip git curl
+RUN apk update && apk add unzip git curl protobuf
 
 RUN go get -u github.com/golang/protobuf/protoc-gen-go
 
@@ -10,8 +10,7 @@ RUN mkdir -p /opt/proto && \
     cd /opt/proto && \
     curl -sSL https://github.com/protocolbuffers/protobuf/releases/download/v3.10.0/protoc-3.10.0-linux-x86_64.zip -O && \
     unzip protoc-3.10.0-linux-x86_64.zip && \
-    rm protoc-3.10.0-linux-x86_64.zip && \
-    cp /opt/proto/bin/protoc /usr/local/bin
+    rm protoc-3.10.0-linux-x86_64.zip
 
 RUN mkdir -p /opt/google && \
     cd /opt/google && \
