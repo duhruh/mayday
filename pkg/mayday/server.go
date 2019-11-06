@@ -49,7 +49,7 @@ func (m server) Start(ctx context.Context) error {
 
 	lis, err := net.Listen("tcp", m.config.GRPCPort())
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to create listener[%v]: %v", m.config.GRPCPort(), err)
 	}
 	grpcServer := grpc.NewServer()
 

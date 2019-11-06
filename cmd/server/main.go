@@ -42,6 +42,14 @@ func main() {
 		"environment": cfg.AppEnvironment(),
 	})
 
+	if cfg.IsProduction() {
+		logger.SetFormatter(&logrus.JSONFormatter{})
+
+		baseLogger = baseLogger.WithFields(logrus.Fields{
+			"name": cfg.AppName(),
+		})
+	}
+
 	databaseConnection := db.NewConnection(cfg.DatabaseAdapter(), cfg.DatabaseDSN())
 
 	databaseConnection.Open()
