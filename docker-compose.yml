@@ -4,6 +4,10 @@ services:
     build: 
       context: .
       target: server-dev
+      args:
+        GIT_COMMIT: "dev"
+        BUILD_TIME: "now"
+        VERSION: "0"
     volumes:
       - ${APP_CODE_PATH_HOST:-.}:${APP_CODE_PATH_CONTAINER:-/app}
     tty: true
@@ -15,6 +19,10 @@ services:
     build: 
       context: .
       target: client-dev
+      args:
+        GIT_COMMIT: "dev"
+        BUILD_TIME: "now"
+        VERSION: "0"
     volumes:
       - ${APP_CODE_PATH_HOST:-.}:${APP_CODE_PATH_CONTAINER:-/app}
     tty: true

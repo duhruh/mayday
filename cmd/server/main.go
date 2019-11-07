@@ -5,6 +5,7 @@ import (
 	"flag"
 	"os"
 
+	"github.com/docker/mayday/pkg"
 	"github.com/docker/mayday/pkg/db"
 	"github.com/docker/mayday/pkg/mayday"
 	"github.com/sirupsen/logrus"
@@ -41,6 +42,17 @@ func main() {
 	baseLogger := logger.WithFields(logrus.Fields{
 		"environment": cfg.AppEnvironment(),
 	})
+
+	if cfg.IsProduction() {
+		logger.SetFormatter(&logrus.JSONFormatter{})
+
+		baseLogger = baseLogger.WithFields(logrus.Fields{
+			"name":      cfg.AppName(),
+			"version":   pkg.Version,
+			"buildTime": pkg.BuildTime,
+			"commit":    pkg.GitCommit,
+		})
+	}
 
 	databaseConnection := db.NewConnection(cfg.DatabaseAdapter(), cfg.DatabaseDSN())
 
