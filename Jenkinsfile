@@ -12,7 +12,7 @@ pipeline {
                 sh '''
                 GIT_COMMIT=`git rev-parse --short HEAD`
                 BUILD_TIME=`date +%FT%T%z`
-                docker-compose -f docker-compose.prod.yml build mayday client --build-arg GIT_COMMIT=${GIT_COMMIT} --build-arg BUILD_TIME=${BUILD_TIME} --build-arg VERSION=${GIT_COMMIT}
+                docker-compose -f docker-compose.prod.yml build --build-arg GIT_COMMIT=${GIT_COMMIT} --build-arg BUILD_TIME=${BUILD_TIME} --build-arg VERSION=${GIT_COMMIT} mayday client
                 '''
             }
         }
