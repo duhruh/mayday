@@ -44,7 +44,7 @@ func (m server) Start(ctx context.Context) error {
 	m.logger.Info("initializing database")
 	err := repository.Init(ctx, m.observationRepo, m.typeRepo)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to initialize database: %v", err)
 	}
 
 	lis, err := net.Listen("tcp", m.config.GRPCPort())

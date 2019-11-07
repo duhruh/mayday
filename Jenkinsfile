@@ -9,10 +9,17 @@ pipeline {
         stage("build") {
             steps{
                 sh 'cp .env.example .env'
-                sh 'docker-compose -f docker-compose.prod.yml build mayday client'
+                sh '''
+                GIT_COMMIT=`git rev-parse --short HEAD`
+                BUILD_TIME=`date +%FT%T%z`
+                docker-compose -f docker-compose.prod.yml build mayday client --build-arg GIT_COMMIT=${GIT_COMMIT} --build-arg BUILD_TIME=${BUILD_TIME} --build-arg VERSION=${GIT_COMMIT}
+                '''
             }
         }
-        stage("Push") {
+        stage("push") {
+            when {
+                branch 'master'
+            }
             steps {
                 withDockerRegistry(dtrRegistryCreds) {
                     sh "docker-compose -f docker-compose.prod.yml push mayday client"
